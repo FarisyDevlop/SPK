@@ -111,3 +111,12 @@ resources/views/                     tampilan (Blade + Bootstrap 5)
 routes/web.php                       daftar route
 public/vendor/                       Bootstrap, ikon, font (lokal, jalan tanpa internet)
 ```
+
+## Deploy di Hugging Face Spaces (tanpa kartu kredit)
+
+1. Buat Space baru: SDK **Docker**, template **Blank**, hardware **CPU basic (free)**.
+2. Isi Space cukup dengan `huggingface/Dockerfile` dan `huggingface/README.md` dari repo ini (taruh di root Space).
+   Dockerfile itu mengambil kode terbaru langsung dari GitHub saat build.
+3. Di **Settings → Variables and secrets** tambahkan secret `APP_KEY` dan `DB_URL` (connection string Neon).
+4. Setelah ada perubahan kode di GitHub, buka Space → Settings → **Factory rebuild**.
+5. Pakai alamat langsung `https://USERNAME-NAMASPACE.hf.space` supaya form berjalan normal.
