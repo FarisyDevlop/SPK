@@ -1,0 +1,29 @@
+# Blueprint Render: New > Blueprint > pilih repo ini
+services:
+  - type: web
+    name: spk-saw
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /up
+    envVars:
+      - key: APP_NAME
+        value: SPK SAW Vendor SIMRS
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_LOCALE
+        value: id
+      - key: APP_KEY
+        sync: false          # tempel APP_KEY saat membuat blueprint
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_URL
+        sync: false          # connection string dari Neon
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: LOG_CHANNEL
+        value: stderr
